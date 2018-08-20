@@ -1,10 +1,10 @@
 # MetaSeal
 MetaSeal is a tool designed to extract metadata from the files of a web page, obtaining sensitive information and classifying it
 
-# install
+# Install
     pip -r requeriments.txt
     python setup.py
-# usage
+# Usage
     metaseal --help
     metaseal URL (search all files)
     metaseal URL filetype1,filetype2,filetype3,filetype4 (search X types of files)
@@ -12,6 +12,9 @@ MetaSeal is a tool designed to extract metadata from the files of a web page, ob
 # About
 Based on https://www.elevenpaths.com/en/labstools/foca-2/index.html, but focused on metadata, and done for the linux terminal
 
+Any idea, failure etc please report to telegram: blueudp
+
+Tested in ParrotOS and Kali Linux 2.0
 # Contact Me
 Name: Eduardo Pérez-Malumbres
 
