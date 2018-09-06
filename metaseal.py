@@ -1,22 +1,38 @@
-
 # ------------------------ IMPORTS ------------------------
+
 try:
     import argparse
 except ImportError:
     print("Error importing argparse")
-
-
+    exit()
 try:
 	import sys
 except ImportError:
 	print("Error importing 'sys' module")
+    exit()
+try:
+    from google import google
+except ImportError:
+    print("Error importing google module, try: pip install Google-Search-API")
+    exit()
+
+try:
+    import urllib.request
+except ImportError:
+    print("Error importing 'urllib.request' module")
+    exit()
+try:
+    from os.path import basename
+except ImportError
+    print("Error 'importing basename', from 'os.path'")
+    exit()
 
 # ------------------------ FILE ------------------------
 
 if sys.argv > 2:
-	extensions = sys.argv[:2]
-else:
-    try: #except error
+	extensions = sys.argv[:2] # if suer selected fyletypes we select it
+else: # if not, we use default extensions
+    try:
         filex=open("extensions.txt", "r")  #open
     except FileNotFoundError:
         print("[¡] File extensions.txt does not exist")          
@@ -29,9 +45,7 @@ else:
 
 
 # ------------------------ CATCHING USER INPUT ------------------------
-filetypes = NULL 
-if sys.arg > 2:
-	filetypes = sys.arg[2:] # if user select some filetypes we will search for it
+
 web = sys.arg[1]
 
 
@@ -59,10 +73,24 @@ if results.add:
 		extensions.append(filetype_to_add)
 
 
-#foreach extension
+for extension in extensions:
+
 #------------------------ SEARCH FILES ------------------------
 
+    files_2_download = input("searching {}, how many files do you want to download?: ".format(extension[i]))
+    query = "site:" + web + " filetype:" + extension[i]
+    google_search = google.search(query, 1)
+    while google_search > len(files_2_download):
+        google_search.pop()
 # ------------------------ DOWNLOAD FILES ------------------------
 
+    for link in google_search:
+        filename = basename(link)
+        filename = "files/" + filename
+        print("Downloading {}".format(filename))
+        urllib.request.urlretrieve(link, filename) 
+        
+
 #------------------------ EXIFTOOL FILES ------------------------
+
 
